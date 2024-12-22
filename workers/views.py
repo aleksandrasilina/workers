@@ -16,7 +16,7 @@ class WorkerListAPIView(ListAPIView):
 
     def get_queryset(self, *args, **kwargs):
         super().get_queryset(*args, **kwargs)
-        return Worker.objects.filter(team_id=self.kwargs.get('team_id'))
+        return Worker.objects.filter(team_id=self.kwargs.get("team_id"))
 
 
 class WorkerRetrieveAPIView(RetrieveAPIView):
@@ -34,15 +34,15 @@ class FileUploadView(APIView):
 
     def put(self, request, filename, format=None):
         try:
-            file_obj = request.data['file']
+            file_obj = request.data["file"]
             file_obj_json = excel_to_json_worker(file_obj)
 
             for worker in file_obj_json:
                 Worker.objects.get_or_create(**worker)
 
-            return Response({'status': 'success', 'message': 'File uploaded.'})
+            return Response({"status": "success", "message": "File uploaded."})
 
         except Exception as e:
             error_message = str(e)
 
-            return Response({'status': 'error', 'message': error_message})
+            return Response({"status": "error", "message": error_message})
