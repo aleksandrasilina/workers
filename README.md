@@ -27,7 +27,7 @@
 ## Запуск проекта
 1. Клонируйте проект
 ```
-git clone git@github.com:aleksandrasilina/habit_tracker.git
+git clone git@github.com:aleksandrasilina/workers.git
 ```
 2. Установите зависимости
 ```
